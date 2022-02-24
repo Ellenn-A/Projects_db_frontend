@@ -7,17 +7,6 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -29,8 +18,25 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-heading-div{
+  padding:2em 0;
+  font-size: large;
+  font-family: monospace;
+  color: rgb(229, 218, 233);
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(114,23,130,1) 83%);
+}
+
+.add-new-project-header{
+  padding: 1em;
+}
+.add-new-project-area{
+ padding-bottom: 4em;
+}
+
+.cards-area{
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(114,23,130,1) 83%);
 }
 /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 /* STYLING WHOLE CARDS AREA */
@@ -43,14 +49,15 @@
 /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 /* STYLING CARDS */
 .card-container {
-  margin:1em;
+  margin:2em;
   width: 40%;
   background-color: aliceblue;
   border-radius: 5px;
 }
 .card-header{
   flex-direction: column;
-  background-color: orange;
+  background: rgb(91,83,230);
+background: linear-gradient(90deg, rgba(91,83,230,1) 0%, rgba(188,112,201,1) 83%);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -98,6 +105,7 @@
   margin: 0.3rem 0rem;
   font-size: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: blueviolet;
 }
 
 
@@ -106,10 +114,32 @@
   cursor:pointer;
   font-size: large;
   font-weight: 700;
-  color: white;
+  color: rgb(231, 181, 227);
   border:none;
+  border-radius: 2px;
   width: 750px;
-  background-color: rgb(4, 70, 39);
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(114,23,130,1) 83%);
+}
+.add-project-button:hover{
+  color: rgb(247, 225, 246);
 }
 
 /* STYLING THE PROJECT BUTTONS */
+.action-button{
+  padding: 0.5rem;
+  margin: 0.5rem 0rem;
+  border-radius: 2px;
+  cursor:pointer;
+  font-size: large;
+  font-weight: 700;
+  color: white;
+  border:none;
+  width: 50%;
+  background: rgb(91,83,230);
+  background: linear-gradient(90deg, rgba(91,83,230,1) 0%, rgba(188,112,201,1) 83%);
+}
+
+.action-button:hover{
+  color: white;
+}
