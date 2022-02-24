@@ -49,7 +49,6 @@ export const AddNewProject:React.FC<IProjectProp> =({projectsArrayInterface, set
             languages:(`${input.languages}`).split(','),
             challenges:(`${input.challenges}`).split(','),
         }
-        console.log('here')
 
         //means run the function I provided earlier wt this input 
         createProjectRequest.mutate({project:newProject});
@@ -68,7 +67,7 @@ export const AddNewProject:React.FC<IProjectProp> =({projectsArrayInterface, set
         //check if data is defined
         if (createProjectRequest.data){ //check if state different from base state
             
-            console.log(createProjectRequest.data); //do whatever wt data, probs change state
+            // console.log(createProjectRequest.data); //do whatever wt data, probs change state
             setAllProjects(createProjectRequest.data); //set array of all tprojects from the db as the base array
             createProjectRequest.reset(); //set it back to the base state (all undefined) 
         }

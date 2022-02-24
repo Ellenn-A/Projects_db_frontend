@@ -1,6 +1,7 @@
 import { isAbsolute } from "path/posix";
 import React, { useEffect } from "react";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
+import { deleteProject } from "../helpers/deleteProject.helper";
 import { getAllProjects } from "../helpers/getAllProjects.helper";
 import { IProjectList, IProjectProp } from "../types/types";
 
@@ -14,30 +15,23 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
        if(getAllProjectsRequest.data){
         // console.log(getAllProjectsRequest.data)
        setAllProjects(getAllProjectsRequest.data)
-}
-     },[getAllProjectsRequest.data])
-    // console.log(projectsArrayInterface);
-
-    //testing
-    // projectsArrayInterface.map(thing =>{
-    //     const languagesArr = (thing.languages).toString().split(',');
-    //     console.log(languagesArr)
-    //     for (let data in languagesArr){
-    //         console.log(languagesArr[data])
-    //     }
-    // })
-
-    //dislay info from array 
-    const languagesArr = (arrayAsString:string[]) => {
-        const actualArray = (arrayAsString).toString().split(',');
-        console.log(actualArray);
-        console.log(actualArray.length);
-        for (let i = 0; i< actualArray.length;i++){
-            console.log(i)
-            console.log(actualArray[i])
-            return actualArray[i]
         }
+     },[getAllProjectsRequest.data])
+
+    //useMutataion - to delete a project 
+    const deleteProjectRequest = useMutation(deleteProject);
+
+    //send back the name of a record and delete by id 
+    const handleClick = async (projectName:string) =>{
+        deleteProjectRequest.mutate(projectName) //sending in the project name and deleting from db 
+        // console.log('trying to delete: '+projectName)
     }
+    useEffect(()=>{ //check if there's a response from deleteProjectRequest muation
+        if(deleteProjectRequest.data){
+            setAllProjects(deleteProjectRequest.data) //set projects to the current data array 
+        }
+     },[deleteProjectRequest.data])
+   
 
     //return the project cards  
     const renderList = ():JSX.Element[]=>{
@@ -73,7 +67,7 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
                                 </div>
                                 <div className="sub-text">
                                     <p>
-                                        {thing.languages}
+                                        {thing.languages}   
                                     </p>
                                 </div>
                             </div>
@@ -83,12 +77,20 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
                                     <h3>Biggest challenges</h3>
                                 </div>
                                 <div className="sub-text">
-                                   
-                                        {/* {languagesArr(thing.challenges)} */}
+                                    {/* display each entry in the array on a new line */}
                                         {(((thing.challenges).toString().split(',')).map(item =>{ return (<p>{item}</p>)}))}
                                     
                                 </div>
                             </div>
+                        </div>
+                        <div className="actions-button-container">
+                            <button className="delete-project-button action-button" onClick={() =>handleClick(thing.project_name)}>
+                                Delete this record
+                            </button>
+                            <br />
+                            <button className="alter-project-button action-button" onClick={() =>handleClick(thing.project_name)}>
+                                Update this record
+                            </button>
                         </div>
                         
                     </div>

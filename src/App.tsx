@@ -10,9 +10,6 @@ const queryClient = new QueryClient();
 const App = () => {
   // const [projects, setProjects] = useState<IProject[]>([])//starting with an empty array for projects 
   const [projects, setProjects] = useState<IProject[]>([])
-
-
-
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
@@ -25,6 +22,4 @@ const App = () => {
   );
   
 }
-
-
 export default App;
