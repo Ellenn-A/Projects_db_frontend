@@ -1,5 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .App-logo {
@@ -27,12 +32,82 @@
 .App-link {
   color: #61dafb;
 }
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* STYLING WHOLE CARDS AREA */
+.all-projects{
+  display: flex;
+  flex-direction: row;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* STYLING CARDS */
+.card-container {
+  margin:1em;
+  width: 40%;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+.card-header{
+  flex-direction: column;
+  background-color: orange;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.image-container{
+  height: 250px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.card-image{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  padding-top: 4em;
+}
+.project-title{
+  padding-top: 2.5em;
+  padding-bottom: 1em;
+}
+
+.card-body{
+  padding: 2em;
+}
+.card-subheading{
+  padding-top: 1em;
+}
+.sub-text{
+  padding: 1em;
+}
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* STYLING FORM */
+
+.center-projects{
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto; 
+}
+.adding-project-input{
+  width: 100%;
+  margin: 0.3rem 0rem;
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.add-project-button{
+  padding: 0.5rem;
+  cursor:pointer;
+  font-size: large;
+  font-weight: 700;
+  color: white;
+  border:none;
+  width: 750px;
+  background-color: rgb(4, 70, 39);
 }
