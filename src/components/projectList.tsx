@@ -1,9 +1,10 @@
 import { isAbsolute } from "path/posix";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { deleteProject } from "../helpers/deleteProject.helper";
 import { getAllProjects } from "../helpers/getAllProjects.helper";
 import { IProjectList, IProjectProp } from "../types/types";
+import { Popup } from "./pop-up";
 
 
 export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAllProjects}) => {
@@ -26,6 +27,12 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
         deleteProjectRequest.mutate(projectName) //sending in the project name and deleting from db 
         // console.log('trying to delete: '+projectName)
     }
+    //popup stuff
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const togglePopup = ():void =>{
+        setIsOpen(!isOpen)
+    }
+
     useEffect(()=>{ //check if there's a response from deleteProjectRequest muation
         if(deleteProjectRequest.data){
             setAllProjects(deleteProjectRequest.data) //set projects to the current data array 
@@ -89,11 +96,20 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
                                 Delete this record
                             </button>
                             <br />
-                            <button className="alter-project-button action-button" >
+                            <button className="alter-project-button action-button" onClick={togglePopup}>
+                           
                                 Update this record
-                            </button>
+                            </button> 
+                            
                         </div>
-                        
+                        {isOpen && <Popup
+                                content={<>
+                                    <b>Careful</b>
+                                    <p>By Clicking this button you could damage record</p>
+                                    <button className=" action-button">Continue regardless</button>
+                                </>}
+                                handleClose={togglePopup} projectName={thing.project_name}
+                                />}
                     </div>
 
                
