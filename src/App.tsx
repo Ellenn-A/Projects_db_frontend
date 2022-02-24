@@ -14,8 +14,10 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <div className="main-heading-div">
+ 
           <h1>All my projects ^_^</h1>
         </div>
+        
         <div className="add-new-project-area">
           <div className="add-new-project-header">
             <h3>
@@ -24,7 +26,7 @@ const App = () => {
           </div>
           <AddNewProject projectsArrayInterface={projects} setAllProjects={setProjects}/>
         </div>
-        <div className="cards-area">
+        <div className="cards-area ">
           <ProjectList projectsArrayInterface={projects} setAllProjects={setProjects} />
         </div>
       </div>

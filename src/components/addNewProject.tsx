@@ -77,7 +77,7 @@ export const AddNewProject:React.FC<IProjectProp> =({projectsArrayInterface, set
 
         <div className="add-project-container">
             <div className="center-projects">
-                <input type="text" name="project_name" value={input.project_name} onChange={handleChange} placeholder="Project name" className="adding-project-input"/>
+                <textarea name="project_name" value={input.project_name} onChange={handleChange} placeholder="Project name" className="adding-project-input"/>
                 <textarea name="screenshot_links" value={input.screenshot_links}  onChange={handleChange} placeholder="Screenshot links" className="adding-project-input"/>
                 <textarea name="tagline" value={input.tagline} onChange={handleChange}placeholder="Tagline" className="adding-project-input"/>
                 <textarea name="link_to_project" value={input.link_to_project} onChange={handleChange} placeholder="Link to project" className="adding-project-input"/>

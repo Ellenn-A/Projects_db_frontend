@@ -46,8 +46,9 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
                             </div>
                                 <h2 className="project-title">
                                    {thing.project_name}
-                                </h2> 
+                                </h2>
                         </div>
+                       
 
                         <div className="card-body">
                             <div className="card-subcontainer">
@@ -88,7 +89,7 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
                                 Delete this record
                             </button>
                             <br />
-                            <button className="alter-project-button action-button" onClick={() =>handleClick(thing.project_name)}>
+                            <button className="alter-project-button action-button" >
                                 Update this record
                             </button>
                         </div>
