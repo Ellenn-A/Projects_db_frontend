@@ -38,7 +38,9 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
             setAllProjects(deleteProjectRequest.data) //set projects to the current data array 
         }
      },[deleteProjectRequest.data])
-   
+
+
+    
 
     //return the project cards  
     const renderList = ():JSX.Element[]=>{
@@ -96,7 +98,7 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
                                 Delete this record
                             </button>
                             <br />
-                            <button className="alter-project-button action-button" onClick={togglePopup}>
+                            <button className="alter-project-button action-button" onClick={togglePopup} >
                            
                                 Update this record
                             </button> 
@@ -104,9 +106,7 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
                         </div>
                         {isOpen && <Popup
                                 content={<>
-                                    <b>Careful</b>
-                                    <p>By Clicking this button you could damage record</p>
-                                    <button className=" action-button">Continue regardless</button>
+                                    <b>Update your record</b>
                                 </>}
                                 handleClose={togglePopup} projectName={thing.project_name}
                                 />}
