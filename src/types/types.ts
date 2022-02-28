@@ -10,6 +10,7 @@ export interface IProject{ //single project
     challenges:string[]
 }
 export interface IProjectFromBackend{ //project from bacend 
+    id?:number,
     project_name?:string,
     screenshot_links?:string[],
     tagline?: string,

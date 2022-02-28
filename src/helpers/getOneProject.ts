@@ -7,7 +7,7 @@ export const getOneProject= async(projectName:string):Promise<IProjectFromBacken
     const result= await axios.post<IProjectFromBackend>('http://localhost:3001/getOneProject',{  
         body:projectName
     }) //gives back object
-    console.log('result.data');
-    console.log(result);
+    // console.log('result.data');
+    // console.log(result);
     return result.data;
     }

@@ -28,8 +28,13 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
         // console.log('trying to delete: '+projectName)
     }
     //popup stuff
+    const [currentProj, setCurrentProj] = useState<string>('');
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const togglePopup = ():void =>{
+    const togglePopup = (projName:string):void =>{
+        setIsOpen(!isOpen)
+        setCurrentProj(projName)
+    }
+    const togglePopup2 = ():void =>{
         setIsOpen(!isOpen)
     }
 
@@ -98,7 +103,8 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
                                 Delete this record
                             </button>
                             <br />
-                            <button className="alter-project-button action-button" onClick={togglePopup} >
+                            {/* need to set the var outside of the render */}
+                            <button className="alter-project-button action-button" onClick={() =>togglePopup(thing.project_name)} >
                            
                                 Update this record
                             </button> 
@@ -108,7 +114,7 @@ export const ProjectList:React.FC<IProjectProp> = ({projectsArrayInterface,setAl
                                 content={<>
                                     <b>Update your record</b>
                                 </>}
-                                handleClose={togglePopup} projectName={thing.project_name}
+                                handleClose={togglePopup2} setAllProjects={setAllProjects} projectName={currentProj}
                                 />}
                     </div>
 

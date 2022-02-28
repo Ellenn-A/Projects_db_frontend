@@ -6,9 +6,9 @@ interface INewProject{
 }
 
 //sends new object from UI and awaits respose 
-export const addProject = async({project}:INewProject) =>{
+export const addProject = async({project}:INewProject):Promise<IProject[]> =>{
     // console.log('hitting this')
-    const result = await axios.post('http://localhost:3001/addProject',{
+    const result = await axios.post<IProject[]>('http://localhost:3001/addProject',{
         body:project
     })
     // console.log('returning result')

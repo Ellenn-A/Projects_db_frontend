@@ -1,27 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
+import { addProject } from "../helpers/addProject.helper";
 import { getOneProject } from "../helpers/getOneProject";
+import { updateProject } from "../helpers/updateProject.helper";
 import { IProject } from "../types/types";
 
 interface IProps{
     content:{},
     handleClose: () => void,
-    projectName:string
+    projectName:string,
+    setAllProjects: React.Dispatch<React.SetStateAction<IProject[]>>
 }
 
-// const emptyProject:IProject={
-//     project_name:"some text",
-//       screenshot_links:[],
-//       tagline: "",
-//       link_to_project: "",
-//       github_link:"",
-//       about:"",
-//       languages:[],
-//       challenges:[]
-// }
 
 
-export const Popup:React.FC<IProps> = ({content,handleClose,projectName}) =>{
+export const Popup:React.FC<IProps> = ({content,handleClose,projectName,setAllProjects}) =>{
     
     //GET ONE PROJECT FROM DB why does this break?? 
     const getOneProjectRequest = useMutation(getOneProject);
@@ -56,6 +49,33 @@ export const Popup:React.FC<IProps> = ({content,handleClose,projectName}) =>{
     }
    
 
+    //update project 
+    //useMutation 
+    const createProjectRequest = useMutation(updateProject);
+    const handleClick = async () =>{
+        const newProject = {
+            ...input,
+            screenshot_links:(`${input?.screenshot_links}`).split(','), //saving as array
+            languages:(`${input?.languages}`).split(','),
+            challenges:(`${input?.challenges}`).split(','),
+        }
+        createProjectRequest.mutate({project:newProject});
+        // console.log('one')
+        // console.log(createProjectRequest)
+        console.log('Project updated')
+        //cannt close here, 
+
+    }
+    console.log(createProjectRequest)
+    useEffect(()=>{ //this is not being triggered
+        if(createProjectRequest.data){
+            setAllProjects(createProjectRequest.data)
+            console.log('hitting this')
+            createProjectRequest.reset();
+            handleClose(); //here is where i close the modal 
+        }
+    },[createProjectRequest.isSuccess])
+
     return (
         <div className="popup-box">
             <div className="box">
@@ -76,7 +96,7 @@ export const Popup:React.FC<IProps> = ({content,handleClose,projectName}) =>{
                 <textarea name="challenges" value={input?.challenges} onChange={handleChange}placeholder="Challenges" className="adding-project-input"/>
 
 
-                <button className="action-button" onClick={()=>displayData(projectName)}>Add Project</button>
+                <button className="action-button" onClick={handleClick}>Update Project</button>
             </div>
             
                 
